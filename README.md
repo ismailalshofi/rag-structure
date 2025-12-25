@@ -9,7 +9,7 @@ Retrieval-Augmented Generation (RAG) Implementation
 2) Create new conda env for the project:
 
 ```bash
-$ conda create -n rag-structure python=3.8
+$ conda create -n rag-structure python=3.13
 ```
 
 3) Activate the created env:
