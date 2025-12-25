@@ -39,4 +39,4 @@ Add your environment variables to '.env' like local variables or API keys
 ```bash
 $ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
-Postman collection: [/assets/rag-structure.postman_collection.json](/assets/rag-structure.postman_collection.json)
+Postman collection: [/app/assets/rag-structure.postman_collection.json](/app//assets/rag-structure.postman_collection.json)
