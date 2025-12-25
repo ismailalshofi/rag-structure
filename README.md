@@ -32,5 +32,11 @@ $ pip install -r requirements.txt
 $ cp .env.example .env
 ```
 
-Then add your environment variables to '.env', like secret & api keys
+Add your environment variables to '.env' like local variables or API keys
 
+## Run the FastAPI server:
+
+```bash
+$ uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
+Postman collection: [/assets/rag-structure.postman_collection.json](/assets/rag-structure.postman_collection.json)
