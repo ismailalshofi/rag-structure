@@ -13,6 +13,24 @@ $ conda create -n rag-structure python=3.13
 ```
 
 3) Activate the created env:
+
 ```bash
 $ conda activate rag-structure
 ```
+
+## Installation
+
+### Install requirements:
+
+```bash
+$ pip install -r requirements.txt
+```
+
+### Setup environment variables:
+
+```bash
+$ cp .env.example .env
+```
+
+Then add your environment variables to '.env', like secret & api keys
+
