@@ -28,7 +28,7 @@ class FileService(BaseService):
         return True, ResponseSignal.FILE_UPLOAD_SUCCESS.value
 
     
-    def generate_unique_file_name(self, origin_file_name: str, project_id: str):
+    def generate_unique_file_path(self, origin_file_name: str, project_id: str):
         # Generate random str for file name 
         random_key = self.generate_random_string()
         project_path = ProjectService().get_project_path(project_id=project_id)
@@ -36,14 +36,14 @@ class FileService(BaseService):
         # Get clean file name
         clean_file_name = self.get_clean_file_name(origin_file_name)
 
-        new_file_name = os.path.join(project_path, random_key + "_" + clean_file_name)
+        new_file_path = os.path.join(project_path, random_key + "_" + clean_file_name)
         
         # Generate new random key if it exists
-        while os.path.exists(new_file_name):
+        while os.path.exists(new_file_path):
             random_key = self.generate_random_string()
-            new_file_name = os.path.join(project_path, random_key + "_" + clean_file_name)
+            new_file_path = os.path.join(project_path, random_key + "_" + clean_file_name)
 
-        return new_file_name
+        return new_file_path, random_key
 
 
     def get_clean_file_name(self, file_name: str):
@@ -74,7 +74,7 @@ class FileService(BaseService):
         project_dir = ProjectService().get_project_path(project_id=id)
 
         # Generate new file name with a random string prefix  
-        new_file_name = self.generate_unique_file_name(origin_file_name=file.filename, project_id=id)
+        new_file_name, file_id = self.generate_unique_file_path(origin_file_name=file.filename, project_id=id)
 
         file_path = os.path.join(project_dir, new_file_name)
 
@@ -95,7 +95,8 @@ class FileService(BaseService):
 
         return JSONResponse(
             content={
-                "message": message
+                "message": message,
+                "file_id": file_id
             }
         )
 
