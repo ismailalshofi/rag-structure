@@ -1,13 +1,14 @@
-from fastapi import FastAPI, APIRouter
-import os
+from fastapi import APIRouter, Depends
+
+from app.helpers.config import get_settings, Settings
 
 base_router = APIRouter(prefix='', tags=["Base"])
 
 @base_router.get('/')
-def health():
+def health(settings: Settings = Depends(get_settings)):
 
-    app_name = os.getenv('APP_NAME')
-    app_version = os.getenv('APP_VERSION')
+    app_name = settings.APP_NAME
+    app_version = settings.APP_VERSION
     
     return {
         "message": "Welcome!",
