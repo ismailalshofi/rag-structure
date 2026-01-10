@@ -2,7 +2,7 @@
 import os
 from fastapi import UploadFile, status
 from fastapi.responses import JSONResponse
-from app.models import ResponseSignal
+from app.models import ResponseMessage
 from app.services.project import ProjectService
 from app.services.base import BaseService
 import aiofiles 
@@ -20,12 +20,12 @@ class FileService(BaseService):
     def validate_file(self, file: UploadFile):
 
         if file.content_type not in self.app_settings.FILE_ALLOWED_EXTENSTIONS:
-            return False, ResponseSignal.FILE_TYPE_NOT_SUPPORTED.value
+            return False, ResponseMessage.FILE_TYPE_NOT_SUPPORTED.value
 
         if file.size > self.app_settings.FILE_MAX_SIZE:
-            return False, ResponseSignal.FILE_SIZE_EXCEEDED.value
+            return False, ResponseMessage.FILE_SIZE_EXCEEDED.value
         
-        return True, ResponseSignal.FILE_UPLOAD_SUCCESS.value
+        return True, ResponseMessage.FILE_UPLOAD_SUCCESS.value
 
     
     def generate_unique_file_path(self, origin_file_name: str, project_id: str):
@@ -43,7 +43,7 @@ class FileService(BaseService):
             random_key = self.generate_random_string()
             new_file_path = os.path.join(project_path, random_key + "_" + clean_file_name)
 
-        return new_file_path, random_key
+        return new_file_path, random_key + "_" + clean_file_name
 
 
     def get_clean_file_name(self, file_name: str):
@@ -58,7 +58,7 @@ class FileService(BaseService):
 
 
 
-    async def process_file(self, id: str, file: UploadFile):
+    async def upload_file(self, id: str, file: UploadFile):
 
         is_valid, message = self.validate_file(file=file)
         
@@ -89,7 +89,7 @@ class FileService(BaseService):
             return JSONResponse(
             status_code=status.HTTP_400_BAD_REQUEST,
             content={
-                "message": ResponseSignal.FILE_UPLOAD_FAILED,
+                "message": ResponseMessage.FILE_UPLOAD_FAILED,
             }
         )
 
@@ -99,6 +99,4 @@ class FileService(BaseService):
                 "file_id": file_id
             }
         )
-
-
         
