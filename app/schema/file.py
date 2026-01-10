@@ -11,3 +11,10 @@ class ProcessRequest(BaseModel):
     do_reset: Optional[int] = 0
     
 
+class ProcessResponse(BaseModel):
+
+    message: str
+    file_id: str
+    total_chunks: int
+    chunks: list
+
