@@ -19,4 +19,4 @@ async def process_file(
     project_id: str,
     process_request: ProcessRequest
     ):
-    return await ProcessService().process_file(request=process_request)
+    return await ProcessService(project_id=project_id).process_file(request=process_request)
