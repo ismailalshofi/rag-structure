@@ -1,6 +1,8 @@
 
 from fastapi import APIRouter, UploadFile
-from app.services import FileService
+from app.services import FileService, file
+from app.schema import ProcessRequest
+from app.services import ProcessService
 
 file_router = APIRouter(prefix='/api/file', tags=["File"])
 
@@ -9,4 +11,12 @@ async def upload_file(
     project_id: str,
     file: UploadFile,
     ):
-    return await FileService().process_file(id=project_id, file=file)
+    return await FileService().upload_file(id=project_id, file=file)
+
+
+@file_router.post('/process/{project_id}')
+async def process_file(
+    project_id: str,
+    process_request: ProcessRequest
+    ):
+    return await ProcessService(project_id=project_id).process_file(request=process_request)

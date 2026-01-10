@@ -37,6 +37,6 @@ Add your environment variables to '.env' like local variables or API keys
 ## Run the FastAPI server:
 
 ```bash
-$ uvicorn main:app --reload --host 0.0.0.0 --port 8000
+$ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
 Postman collection: [/app/assets/rag-structure.postman_collection.json](/app//assets/rag-structure.postman_collection.json)
