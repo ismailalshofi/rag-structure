@@ -3,6 +3,7 @@ import os
 from fastapi import UploadFile, status
 from fastapi.responses import JSONResponse
 from app.models import ResponseSignal
+from app.schema import ProcessRequest
 from app.services.project import ProjectService
 from app.services.base import BaseService
 import aiofiles 
@@ -22,6 +23,7 @@ class FileService(BaseService):
         if file.content_type not in self.app_settings.FILE_ALLOWED_EXTENSTIONS:
             return False, ResponseSignal.FILE_TYPE_NOT_SUPPORTED.value
 
+        print("FILE SIZE: ", file.size)
         if file.size > self.app_settings.FILE_MAX_SIZE:
             return False, ResponseSignal.FILE_SIZE_EXCEEDED.value
         
@@ -58,7 +60,7 @@ class FileService(BaseService):
 
 
 
-    async def process_file(self, id: str, file: UploadFile):
+    async def upload_file(self, id: str, file: UploadFile):
 
         is_valid, message = self.validate_file(file=file)
         
@@ -101,4 +103,6 @@ class FileService(BaseService):
         )
 
 
+    def process_file(self, request: ProcessRequest):
+        pass
         
