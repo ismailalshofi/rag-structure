@@ -5,7 +5,7 @@ from app.helpers.config import Settings, get_settings
 
 
 app = FastAPI()
-
+ 
 @app.on_event("startup")
 async def startup():
     settings = get_settings()
