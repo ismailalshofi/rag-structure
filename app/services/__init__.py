@@ -1,3 +1,3 @@
-from .file import FileService
+from .upload import UploadService
 from .project import ProjectService
-from .process import ProcessService
+from .processing import ProcessingService

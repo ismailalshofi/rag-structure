@@ -1,2 +1,2 @@
-from .enums.response_enum import ResponseMessage
-from .enums.file_type_enum import FileType
+from .enums.responses import ResponseMessage
+from .enums.file_types import FileType
