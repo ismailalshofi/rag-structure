@@ -1,18 +1,16 @@
-
 import os
-from app.services.base import BaseService
 
 
-class ProjectService(BaseService):
-    
-    def __init__(self):
-        super().__init__()
+class ProjectService:
 
-    def get_project_path(self, project_id: str):
+    BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+    FILES_DIR = os.path.join(BASE_DIR, "assets/files")
 
-        project_dir = os.path.join(self.file_dir, project_id)
+    @staticmethod
+    def get_project_path(project_id: str) -> str:
+        project_dir = os.path.join(ProjectService.FILES_DIR, project_id)
 
         if not os.path.exists(project_dir):
             os.makedirs(project_dir)
-        
+
         return project_dir
