@@ -1,20 +1,15 @@
-
-
 from typing import Optional
 from pydantic import BaseModel
 
-class ProcessRequest(BaseModel):
 
+class ProcessRequest(BaseModel):
     file_id: str
     chunk_size: Optional[int] = 100
     overlap_size: Optional[int] = 20
-    do_reset: Optional[int] = 0
-    
+
 
 class ProcessResponse(BaseModel):
-
     message: str
     file_id: str
     total_chunks: int
     chunks: list
-
