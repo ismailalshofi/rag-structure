@@ -1,0 +1,20 @@
+[
+  {"question": "Which sport is considered the most popular in the world?", "file": "sports.pdf", "must_contain": ["most popular sport"]},
+  {"question": "What does modern basketball emphasize compared to earlier strategies?", "file": "sports.pdf", "must_contain": ["three-"]},
+  {"question": "On which surfaces do professional tennis players compete?", "file": "sports.pdf", "must_contain": ["clay", "grass"]},
+  {"question": "How is AI used to prevent injuries in sports?", "file": "sports.pdf", "must_contain": ["predict injuries"]},
+  {"question": "What are esports competitions based on?", "file": "sports.pdf", "must_contain": ["video games"]},
+  {"question": "Which challenges do female athletes still face?", "file": "sports.pdf", "must_contain": ["equal pay"]},
+  {"question": "How are stadiums trying to become more sustainable?", "file": "sports.pdf", "must_contain": ["solar"]},
+  {"question": "Which composers shaped modern musical theory?", "file": "music.pdf", "must_contain": ["Beethoven"]},
+  {"question": "Where is music therapy used?", "file": "music.pdf", "must_contain": ["hospitals"]},
+  {"question": "Which instruments are common in jazz?", "file": "music.pdf", "must_contain": ["saxophones"]},
+  {"question": "Why do some musicians rely on touring and merchandise?", "file": "music.pdf", "must_contain": ["streaming payments"]},
+  {"question": "What can AI systems do in music creation?", "file": "music.pdf", "must_contain": ["separate vocals"]},
+  {"question": "What genres are part of electronic music?", "file": "music.pdf", "must_contain": ["techno"]},
+  {"question": "Where did hip-hop come from?", "file": "music.pdf", "must_contain": ["urban communities"]},
+  {"question": "What is the capital of Australia?", "file": null},
+  {"question": "How do I bake sourdough bread?", "file": null},
+  {"question": "What is the syntax of a Python list comprehension?", "file": null},
+  {"question": "How much does a new electric car cost?", "file": null}
+]

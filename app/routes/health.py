@@ -1,17 +1,18 @@
 from fastapi import APIRouter, Depends
 
-from app.config import get_settings, Settings
+from app.dependencies import RAG, get_rag
 
-health_router = APIRouter(prefix='', tags=["Health"])
+health_router = APIRouter(prefix="", tags=["Health"])
 
 
-@health_router.get('/')
-def health(settings: Settings = Depends(get_settings)):
-    app_name = settings.APP_NAME
-    app_version = settings.APP_VERSION
-
+@health_router.get("/")
+def health(rag: RAG = Depends(get_rag)):
+    settings = rag.settings
     return {
         "message": "Welcome!",
-        "appName": app_name,
-        "appVersion": app_version
+        "appName": settings.APP_NAME,
+        "appVersion": settings.APP_VERSION,
+        "vectorDb": settings.VECTOR_DB,
+        "embeddings": f"{settings.EMBEDDING_PROVIDER}:{settings.EMBEDDING_MODEL}",
+        "llm": settings.LLM_MODEL,
     }

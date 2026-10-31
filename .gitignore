@@ -215,3 +215,6 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 mongodb
+# Local runtime data: vector database files and old Docker volumes
+data/
+docker/

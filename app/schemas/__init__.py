@@ -1,1 +1,2 @@
-from .document import ProcessRequest, ProcessResponse
+from .document import IndexRequest, IndexResponse
+from .query import AskRequest, AskResponse, SearchRequest, SearchResponse, Source

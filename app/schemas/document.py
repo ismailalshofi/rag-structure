@@ -1,15 +1,14 @@
-from typing import Optional
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
-class ProcessRequest(BaseModel):
+class IndexRequest(BaseModel):
     file_id: str
-    chunk_size: Optional[int] = 100
-    overlap_size: Optional[int] = 20
+    # None uses CHUNK_SIZE / CHUNK_OVERLAP from the settings
+    chunk_size: int | None = Field(default=None, ge=100, le=8000)
+    overlap: int | None = Field(default=None, ge=0, le=2000)
 
 
-class ProcessResponse(BaseModel):
+class IndexResponse(BaseModel):
     message: str
     file_id: str
     total_chunks: int
-    chunks: list
